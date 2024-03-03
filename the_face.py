@@ -4,7 +4,9 @@ import subprocess
 import os
 import win32gui, win32api
 
+
 # Initialize Pygame
+
 pygame.init()
 
 # Set up display
@@ -98,7 +100,3 @@ while running:
 # Quit Pygame
 pygame.quit()
 sys.exit()
-process = subprocess.Popen(['python', 'main.py'])
-print(process.pid)
-
-os.kill(process.pid, signal.SIGINT)

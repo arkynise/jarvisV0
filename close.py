@@ -1,4 +1,6 @@
 import psutil
+from text_to_sound import text_to_speech
+from color import write_color
 
 # Function to close a specific software/process
 def create_process_name(order):
@@ -16,6 +18,7 @@ def create_process_name(order):
 
 def close(order):
     # Iterate over all running processes
+    stoped=False
     process_name=create_process_name(order)
     for proc in psutil.process_iter():
         try:
@@ -25,10 +28,22 @@ def close(order):
                 # Terminate the process
 
                 proc.terminate()
-                print(f"{process_name} has been terminated.")
+                stoped=True
+
         except psutil.AccessDenied:
-            print(f"No permission to terminate {process_name}.")
+            text_to_speech(f"No permission to terminate {process_name}.")
         except psutil.NoSuchProcess:
-            print(f"{process_name} is not running.")
+            write_color("0,255,0")
+            text_to_speech(f"{process_name} is not running.")
+            write_color("200,0,0")
+    if stoped:
+        write_color("0,255,0")
+        text_to_speech(f"{process_name} has been terminated.")
+        write_color("200,0,0")
+    else:
+        write_color("0,255,0")
+        text_to_speech(f"i couldn't find {process_name} .")
+        write_color("200,0,0")
+
 
 

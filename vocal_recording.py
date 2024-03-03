@@ -2,6 +2,7 @@ import pyaudio
 import wave
 import datetime
 import shutil
+from text_to_sound import text_to_speech
 # Constants
 def recording_audio(seconds):
     CHUNK = 1024
@@ -21,6 +22,7 @@ def recording_audio(seconds):
     audio = pyaudio.PyAudio()
 
 # Open stream
+    
     stream = audio.open(format=FORMAT,
                     channels=CHANNELS,
                     rate=RATE,

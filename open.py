@@ -1,5 +1,7 @@
 import os
 from text_to_sound import text_to_speech
+from color import write_color
+
 def concat_order(word_list):
 	text=""
 	for string in word_list:
@@ -25,11 +27,15 @@ def open(order):
 
 	if not found:
 		order_lowercase = [string.lower() for string in order]
+		write_color("0,255,0")
 		text_to_speech("i didn't find file with name "+concat_order(order_lowercase))
+		write_color("200,0,0")
 	if found:
 		order_lowercase = [string.lower() for string in order]
+		write_color("0,255,0")
 
 		text_to_speech(concat_order(order_lowercase)+" is opened")
+		write_color("200,0,0")
  
 			
 	

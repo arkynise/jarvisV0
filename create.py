@@ -2,6 +2,9 @@ from PIL import Image
 from docx import Document
 from pptx import Presentation
 import os
+from color import write_color
+from text_to_sound import text_to_speech
+
 
 def create_path(order):
 	new_directory_path="C:/Users/PC/Desktop/"
@@ -51,9 +54,19 @@ def create(order):
 			found=True
 	
 
-
+	write_color("0,255,0")
 	if not found:
-		print(found)
+		name=""
+		for i in range(1,len(order)):
+			name=name+order[i]
+		text_to_speech("i couldn't create "+order[0].lower()+" "+name)
+	else:
+		name=""
+		for i in range(1,len(order)):
+			name=name+order[i]
+		text_to_speech(order[0].lower()+" "+name+" created, you can find it in desktop")
+	write_color("200,0,0")
+		
 
     
 
